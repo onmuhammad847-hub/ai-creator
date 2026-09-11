@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Creator Studio — Unlimited</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#080d19;color:#f7f8ff}
+.app{min-height:100vh;display:flex}.side{width:245px;position:fixed;inset:0 auto 0 0;background:#10172a;border-right:1px solid #293552;padding:18px 12px;overflow:auto}
+.logo{font-size:22px;font-weight:800;padding:8px 10px 20px}.logo span{color:#7c6cff}.group{font-size:11px;color:#77829c;padding:14px 10px 5px;text-transform:uppercase}
+.nav button{display:block;width:100%;border:0;background:none;color:#b8c2d9;text-align:left;padding:11px 10px;border-radius:9px;cursor:pointer;margin:2px 0}.nav button:hover,.nav button.active{background:#202b47;color:white}
+.main{margin-left:245px;width:calc(100% - 245px);padding:25px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.top h1{margin:0;font-size:28px}
+.unlimited{background:#18233c;border:1px solid #665be9;padding:10px 15px;border-radius:10px;color:#fff;font-weight:bold}
+.page{display:none}.page.active{display:block}.hero,.panel{background:#131b30;border:1px solid #293552;border-radius:16px;padding:22px;margin-bottom:18px}
+.hero{background:linear-gradient(135deg,#18264d,#251b49)}.hero h2{margin:0 0 8px;font-size:27px}.hero p,.muted{color:#9ba7c1}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:13px}.card{background:#151f36;border:1px solid #303d5c;border-radius:13px;padding:17px;cursor:pointer}.card:hover{border-color:#7c6cff;transform:translateY(-2px)}.icon{font-size:27px;margin-bottom:10px}.card b{display:block;margin-bottom:5px}
+.field{margin:13px 0}.field label{display:block;color:#b8c3da;font-size:13px;margin-bottom:7px}.field textarea,.field input,.field select{width:100%;background:#0d1427;color:#fff;border:1px solid #33415f;border-radius:9px;padding:12px;font-size:14px}.field textarea{min-height:115px;resize:vertical}.row{display:flex;gap:12px}.col{flex:1}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{background:#18233d;color:#cbd4e7;border:1px solid #354362;border-radius:9px;padding:9px 12px;cursor:pointer}.chip.active{background:#695be9;color:#fff;border-color:#8176ff}
+.primary{border:0;background:#6b5ce7;color:#fff;border-radius:9px;padding:12px 17px;font-weight:bold;cursor:pointer}.output{min-height:120px;border:1px dashed #3a4868;border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;color:#7f8ba5;padding:20px}
+.timeline{display:flex;gap:8px;overflow:auto;margin-top:16px}.scene{min-width:130px;padding:12px;background:#19243d;border:1px solid #354362;border-radius:9px}.scene small{color:#7f8ba5}
+.toast{position:fixed;right:18px;bottom:18px;background:#222e4d;border:1px solid #425277;padding:13px 16px;border-radius:9px;display:none}
+@media(max-width:750px){.side{width:68px}.logo{font-size:0}.logo:first-letter{font-size:22px}.logo span{display:none}.group{display:none}.nav button{font-size:0;text-align:center}.nav button:first-letter{font-size:18px}.main{margin-left:68px;width:calc(100% - 68px);padding:15px}.row{flex-direction:column}.top h1{font-size:21px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="logo">✦ <span>AI Creator</span></div>
+<div class="nav">
+<button class="active" data-page="home">🏠 Home</button>
+<div class="group">Create</div>
+<button data-page="image">🖼️ Text to Image</button>
+<button data-page="video">🎬 Text to Video</button>
+<button data-page="imagevideo">🔄 Image to Video</button>
+<button data-page="movie">🎞️ Text to Movie</button>
+<button data-page="script">📝 Script to Video</button>
+<button data-page="storyboard">🎨 Storyboard</button>
+<button data-page="character">🧑 Character Maker</button>
+<div class="group">Audio & Media</div>
+<button data-page="music">🎵 Music</button><button data-page="song">🎤 Song</button><button data-page="clip">✂️ URL Clipping</button>
+<div class="group">Styles</div><button data-page="styles">✨ AI Styles</button>
+<div class="group">Special</div><button data-page="asmr">🏗️ ASMR Building</button><button data-page="cooking">🍳 ASMR Cooking</button><button data-page="projects">📁 My Projects</button>
+</div></aside>
+
+<main class="main">
+<div class="top"><h1 id="title">AI Creator Studio</h1><div class="unlimited">⚡ Unlimited</div></div>
+
+<section id="home" class="page active">
+<div class="hero"><h2>AI Creator Studio</h2><p>Your personal all-in-one workspace for images, videos, movies, music, songs, storyboards, characters, clips and ASMR.</p></div>
+<div class="grid">
+<div class="card" onclick="go('image')">🖼️ <b>Text to Image</b><span class="muted">Create AI images</span></div>
+<div class="card" onclick="go('video')">🎬 <b>Text to Video</b><span class="muted">Generate videos</span></div>
+<div class="card" onclick="go('imagevideo')">🔄 <b>Image to Video</b><span class="muted">Animate images</span></div>
+<div class="card" onclick="go('movie')">🎞️ <b>Movie Maker</b><span class="muted">Script to long movie</span></div>
+<div class="card" onclick="go('script')">📝 <b>Script to Video</b><span class="muted">Turn scripts into scenes</span></div>
+<div class="card" onclick="go('storyboard')">🎨 <b>Storyboard</b><span class="muted">Plan every scene</span></div>
+<div class="card" onclick="go('character')">🧑 <b>Character Maker</b><span class="muted">Consistent characters</span></div>
+<div class="card" onclick="go('clip')">✂️ <b>URL Clipping</b><span class="muted">Create clips</span></div>
+<div class="card" onclick="go('music')">🎵 <b>Music</b><span class="muted">Background music</span></div>
+<div class="card" onclick="go('song')">🎤 <b>Song</b><span class="muted">Create songs</span></div>
+<div class="card" onclick="go('asmr')">🏗️ <b>ASMR Building</b><span class="muted">Satisfying videos</span></div>
+<div class="card" onclick="go('cooking')">🍳 <b>ASMR Cooking</b><span class="muted">Cooking videos</span></div>
+</div></section>
+
+<section id="image" class="page"><div class="panel"><h2>🖼️ Text to Image</h2><div class="field"><label>Prompt</label><textarea placeholder="Describe your image..."></textarea></div><div class="field"><label>Style</label><div class="chips"><button class="chip active">3D Animation</button><button class="chip">Cartoon</button><button class="chip">Realistic</button><button class="chip">4K</button><button class="chip">Charcoal</button><button class="chip">Claymation</button><button class="chip">Concept Sketch</button></div></div><div class="row"><div class="col field"><label>Aspect ratio</label><select><option>16:9</option><option>1:1</option><option>9:16</option></select></div><div class="col field"><label>Number of images</label><select><option>1</option><option>2</option><option>4</option></select></div></div><button class="primary" onclick="request('Image')">Generate Image</button></div><div class="panel"><h3>Preview</h3><div class="output" id="imageOutput">Generated image will appear here.</div><div class="download-row"><button class="download-btn" onclick="downloadRequest('image','AI Image')">⬇️ Download Image</button></div><div class="note">When real AI generation is connected, this button will download the generated image file.</div></div></section>
+
+<section id="video" class="page"><div class="panel"><h2>🎬 Text to Video</h2><div class="field"><label>Video prompt</label><textarea placeholder="Describe scenes, action, camera and audio..."></textarea></div><div class="field"><label>Duration</label><div class="chips"><button class="chip active">1 minute</button><button class="chip">2 minutes</button><button class="chip">3 minutes</button><button class="chip">5 minutes</button><button class="chip">10 minutes</button><button class="chip">30 minutes</button><button class="chip">1 hour</button><button class="chip">2 hours</button></div></div><div class="field"><label>Style</label><select><option>3D Animation</option><option>Cartoon</option><option>Realistic</option><option>4K</option><option>Claymation</option><option>Charcoal</option><option>Concept Sketch</option></select></div><button class="primary" onclick="request('Video')">Generate Video</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('video','AI Video')">⬇️ Download Video</button></div></div></section>
+
+<section id="imagevideo" class="page"><div class="panel"><h2>🔄 Image to Video</h2><div class="field"><label>Upload image</label><input type="file" accept="image/*"></div><div class="field"><label>Motion prompt</label><textarea placeholder="Describe movement and camera motion..."></textarea></div><div class="field"><label>Duration</label><select><option>1 minute</option><option>2 minutes</option><option>3 minutes</option><option>5 minutes</option><option>10 minutes</option></select></div><button class="primary" onclick="request('Image to Video')">Create Video</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp4','Image to Video')">⬇️ Download Video</button></div></div></section>
+
+<section id="movie" class="page"><div class="panel"><h2>🎞️ Text to Movie / Movie Maker</h2><div class="field"><label>Story or script</label><textarea placeholder="Paste your story or movie script..."></textarea></div><div class="row"><div class="col field"><label>Duration</label><select><option>1 minute</option><option>2 minutes</option><option>3 minutes</option><option>5 minutes</option><option>10 minutes</option><option>30 minutes</option><option>1 hour</option><option>2 hours</option></select></div><div class="col field"><label>Style</label><select><option>3D Animation</option><option>Cartoon</option><option>Realistic</option><option>Claymation</option><option>Concept Sketch</option></select></div></div><div class="field"><label>Movie workflow</label><div class="chips"><button class="chip active">Script → Scenes</button><button class="chip">Scenes → Images</button><button class="chip">Images → Video</button><button class="chip">Voice + Music</button><button class="chip">Final Movie</button></div></div><button class="primary" onclick="request('Movie')">Create Movie</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp4','AI Movie')">⬇️ Download Movie</button></div></div></section>
+
+<section id="script" class="page"><div class="panel"><h2>📝 Script to Video</h2><div class="field"><textarea placeholder="Paste your complete script..."></textarea></div><button class="primary" onclick="request('Script to Video')">Generate Scenes</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('txt','Script / Scene Plan')">⬇️ Download Script</button><button class="download-btn" onclick="downloadRequest('mp4','Script to Video')">⬇️ Download Video</button></div><div class="timeline"><div class="scene">Scene 1<br><small>Opening</small></div><div class="scene">Scene 2<br><small>Action</small></div><div class="scene">Scene 3<br><small>Dialogue</small></div><div class="scene">+</div></div></div></section>
+
+<section id="storyboard" class="page"><div class="panel"><h2>🎨 Storyboard</h2><div class="field"><textarea placeholder="Enter story, script or idea..."></textarea></div><button class="primary" onclick="request('Storyboard')">Create Storyboard</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('pdf','Storyboard')">⬇️ Download Storyboard</button></div></div></section>
+
+<section id="character" class="page"><div class="panel"><h2>🧑 Character Maker</h2><p class="muted">Create a character and keep the same design across images, scenes and movies.</p><div class="field"><label>Character description</label><textarea placeholder="Example: cute toddler, blue shirt, brown hair, friendly smile..."></textarea></div><div class="field"><label>Style</label><div class="chips"><button class="chip active">3D Animation</button><button class="chip">Cartoon</button><button class="chip">Realistic</button><button class="chip">Claymation</button><button class="chip">Concept Sketch</button></div></div><div class="field"><label>Reference image</label><input type="file" accept="image/*"></div><button class="primary" onclick="request('Character')">Create Character</button></div></section>
+
+<section id="styles" class="page"><div class="panel"><h2>✨ AI Styles</h2><div class="grid"><div class="card">🎬 <b>3D Animation</b><span class="muted">Soft toy-like 3D</span></div><div class="card">🧸 <b>Cartoon</b><span class="muted">Cartoon look</span></div><div class="card">📷 <b>Realistic</b><span class="muted">Photoreal style</span></div><div class="card">💎 <b>4K</b><span class="muted">High resolution</span></div><div class="card">🪨 <b>Charcoal</b><span class="muted">Charcoal art</span></div><div class="card">🏺 <b>Claymation</b><span class="muted">Clay animation</span></div><div class="card">✏️ <b>Concept Sketch</b><span class="muted">Sketch style</span></div><div class="card">🌟 <b>Midjourney-style Character</b><span class="muted">Creative character design</span></div></div></div></section>
+
+<section id="music" class="page"><div class="panel"><h2>🎵 Music Maker</h2><div class="field"><textarea placeholder="Example: peaceful piano and rain..."></textarea></div><div class="field"><label>Duration</label><select><option>1 minute</option><option>5 minutes</option><option>10 minutes</option><option>30 minutes</option><option>1 hour</option><option>2 hours</option></select></div><button class="primary" onclick="request('Music')">Generate Music</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp3','Background Music')">⬇️ Download Music</button></div></div></section>
+
+<section id="song" class="page"><div class="panel"><h2>🎤 Song Maker</h2><div class="field"><label>Lyrics or song idea</label><textarea placeholder="Write lyrics or describe your song..."></textarea></div><div class="field"><label>Genre</label><select><option>Children's</option><option>Pop</option><option>Lo-fi</option><option>Cinematic</option><option>Acoustic</option></select></div><button class="primary" onclick="request('Song')">Create Song</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp3','AI Song')">⬇️ Download Song</button></div></div></section>
+
+<section id="clip" class="page"><div class="panel"><h2>✂️ URL Clipping</h2><div class="field"><label>Video URL</label><input type="url" placeholder="https://..."></div><div class="row"><div class="col field"><label>Start</label><input placeholder="00:00"></div><div class="col field"><label>End</label><input placeholder="00:30"></div></div><button class="primary" onclick="request('Clip')">Create Clip</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp4','Video Clip')">⬇️ Download Clip</button></div><p class="muted">Use only content you own or have permission to use.</p></div></section>
+
+<section id="asmr" class="page"><div class="panel"><h2>🎧 ASMR Video Maker</h2><div class="grid"><div class="card">🏗️ <b>ASMR Building</b><span class="muted">Construction and satisfying sounds</span></div><div class="card">🍳 <b>ASMR Cooking</b><span class="muted">Cooking and kitchen sounds</span></div></div><div class="field"><textarea placeholder="Describe your ASMR video..."></textarea></div><button class="primary" onclick="request('ASMR Video')">Generate ASMR Video</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp4','ASMR Video')">⬇️ Download ASMR Video</button></div></div></section>
+
+<section id="cooking" class="page"><div class="panel"><h2>🍳 ASMR Cooking</h2><div class="field"><textarea placeholder="Example: crispy chicken cooking, close-up sounds, no talking..."></textarea></div><button class="primary" onclick="request('ASMR Cooking')">Generate Cooking Video</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp4','ASMR Cooking Video')">⬇️ Download Cooking Video</button></div></div></section>
+
+<section id="projects" class="page"><div class="panel"><h2>📁 My Projects</h2><div class="output" id="projectsOutput">Your generated images, videos, movies, music, songs and clips will appear here.</div><div class="download-row"><button class="download-btn" onclick="downloadRequest('txt','AI Creator Project')">⬇️ Download Project Info</button></div></div></section>
+</main></div>
+<div class="toast" id="toast"></div>
+<script>
+const pages=[...document.querySelectorAll('.page')],nav=[...document.querySelectorAll('.nav button')],title=document.getElementById('title');
+function go(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));nav.forEach(b=>b.classList.toggle('active',b.dataset.page===id));let b=nav.find(x=>x.dataset.page===id);title.textContent=b?b.textContent.replace(/^[^ ]+ /,''):'AI Creator Studio';scrollTo(0,0)}
+nav.forEach(b=>b.onclick=()=>go(b.dataset.page));
+document.querySelectorAll('.chips').forEach(c=>c.onclick=e=>{if(e.target.classList.contains('chip')){c.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));e.target.classList.add('active')}});
+function request(type){let t=document.getElementById('toast');t.textContent=type+' tool selected. Real AI generation will be connected in the next development step.';t.style.display='block';setTimeout(()=>t.style.display='none',3500)}
+function downloadRequest(ext,label){
+  const text = label + "\n\nThis is an AI Creator Studio download placeholder.\nReal media download will work after an AI generation backend is connected.\n";
+  const mime = ext==='txt' ? 'text/plain' : 'application/octet-stream';
+  const blob = new Blob([text],{type:mime});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=label.toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.'+ext;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+</script>
+</body>
+</html>
