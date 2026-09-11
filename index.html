@@ -41,10 +41,8 @@
 <div class="group">Styles</div><button data-page="styles">✨ AI Styles</button>
 <div class="group">Special</div><button data-page="asmr">🏗️ ASMR Building</button><button data-page="cooking">🍳 ASMR Cooking</button><button data-page="projects">📁 My Projects</button>
 </div></aside>
-
 <main class="main">
 <div class="top"><h1 id="title">AI Creator Studio</h1><div class="unlimited">⚡ Unlimited</div></div>
-
 <section id="home" class="page active">
 <div class="hero"><h2>AI Creator Studio</h2><p>Your personal all-in-one workspace for images, videos, movies, music, songs, storyboards, characters, clips and ASMR.</p></div>
 <div class="grid">
@@ -61,33 +59,19 @@
 <div class="card" onclick="go('asmr')">🏗️ <b>ASMR Building</b><span class="muted">Satisfying videos</span></div>
 <div class="card" onclick="go('cooking')">🍳 <b>ASMR Cooking</b><span class="muted">Cooking videos</span></div>
 </div></section>
-
-<section id="image" class="page"><div class="panel"><h2>🖼️ Text to Image</h2><div class="field"><label>Prompt</label><textarea placeholder="Describe your image..."></textarea></div><div class="field"><label>Style</label><div class="chips"><button class="chip active">3D Animation</button><button class="chip">Cartoon</button><button class="chip">Realistic</button><button class="chip">4K</button><button class="chip">Charcoal</button><button class="chip">Claymation</button><button class="chip">Concept Sketch</button></div></div><div class="row"><div class="col field"><label>Aspect ratio</label><select><option>16:9</option><option>1:1</option><option>9:16</option></select></div><div class="col field"><label>Number of images</label><select><option>1</option><option>2</option><option>4</option></select></div></div><button class="primary" onclick="request('Image')">Generate Image</button></div><div class="panel"><h3>Preview</h3><div class="output" id="imageOutput">Generated image will appear here.</div><div class="download-row"><button class="download-btn" onclick="downloadRequest('image','AI Image')">⬇️ Download Image</button></div><div class="note">When real AI generation is connected, this button will download the generated image file.</div></div></section>
-
+<section id="image" class="page"><div class="panel"><h2>🖼️ Text to Image</h2><div class="field"><label>Prompt</label><textarea id="imagePrompt" placeholder="Describe your image..."></textarea></div><div class="field"><label>Style</label><div class="chips"><button class="chip active">3D Animation</button><button class="chip">Cartoon</button><button class="chip">Realistic</button><button class="chip">4K</button><button class="chip">Charcoal</button><button class="chip">Claymation</button><button class="chip">Concept Sketch</button></div></div><div class="row"><div class="col field"><label>Aspect ratio</label><select><option>16:9</option><option>1:1</option><option>9:16</option></select></div><div class="col field"><label>Number of images</label><select><option>1</option><option>2</option><option>4</option></select></div></div><button class="primary" onclick="generateImage()">Generate Image</button></div><div class="panel"><h3>Preview</h3><div class="output" id="imageOutput">Generated image will appear here.</div><div class="download-row"><button class="download-btn" onclick="downloadRequest('image','AI Image')">⬇️ Download Image</button></div><div class="note">When real AI generation is connected, this button will download the generated image file.</div></div></section>
 <section id="video" class="page"><div class="panel"><h2>🎬 Text to Video</h2><div class="field"><label>Video prompt</label><textarea placeholder="Describe scenes, action, camera and audio..."></textarea></div><div class="field"><label>Duration</label><div class="chips"><button class="chip active">1 minute</button><button class="chip">2 minutes</button><button class="chip">3 minutes</button><button class="chip">5 minutes</button><button class="chip">10 minutes</button><button class="chip">30 minutes</button><button class="chip">1 hour</button><button class="chip">2 hours</button></div></div><div class="field"><label>Style</label><select><option>3D Animation</option><option>Cartoon</option><option>Realistic</option><option>4K</option><option>Claymation</option><option>Charcoal</option><option>Concept Sketch</option></select></div><button class="primary" onclick="request('Video')">Generate Video</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('video','AI Video')">⬇️ Download Video</button></div></div></section>
-
 <section id="imagevideo" class="page"><div class="panel"><h2>🔄 Image to Video</h2><div class="field"><label>Upload image</label><input type="file" accept="image/*"></div><div class="field"><label>Motion prompt</label><textarea placeholder="Describe movement and camera motion..."></textarea></div><div class="field"><label>Duration</label><select><option>1 minute</option><option>2 minutes</option><option>3 minutes</option><option>5 minutes</option><option>10 minutes</option></select></div><button class="primary" onclick="request('Image to Video')">Create Video</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp4','Image to Video')">⬇️ Download Video</button></div></div></section>
-
 <section id="movie" class="page"><div class="panel"><h2>🎞️ Text to Movie / Movie Maker</h2><div class="field"><label>Story or script</label><textarea placeholder="Paste your story or movie script..."></textarea></div><div class="row"><div class="col field"><label>Duration</label><select><option>1 minute</option><option>2 minutes</option><option>3 minutes</option><option>5 minutes</option><option>10 minutes</option><option>30 minutes</option><option>1 hour</option><option>2 hours</option></select></div><div class="col field"><label>Style</label><select><option>3D Animation</option><option>Cartoon</option><option>Realistic</option><option>Claymation</option><option>Concept Sketch</option></select></div></div><div class="field"><label>Movie workflow</label><div class="chips"><button class="chip active">Script → Scenes</button><button class="chip">Scenes → Images</button><button class="chip">Images → Video</button><button class="chip">Voice + Music</button><button class="chip">Final Movie</button></div></div><button class="primary" onclick="request('Movie')">Create Movie</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp4','AI Movie')">⬇️ Download Movie</button></div></div></section>
-
 <section id="script" class="page"><div class="panel"><h2>📝 Script to Video</h2><div class="field"><textarea placeholder="Paste your complete script..."></textarea></div><button class="primary" onclick="request('Script to Video')">Generate Scenes</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('txt','Script / Scene Plan')">⬇️ Download Script</button><button class="download-btn" onclick="downloadRequest('mp4','Script to Video')">⬇️ Download Video</button></div><div class="timeline"><div class="scene">Scene 1<br><small>Opening</small></div><div class="scene">Scene 2<br><small>Action</small></div><div class="scene">Scene 3<br><small>Dialogue</small></div><div class="scene">+</div></div></div></section>
-
 <section id="storyboard" class="page"><div class="panel"><h2>🎨 Storyboard</h2><div class="field"><textarea placeholder="Enter story, script or idea..."></textarea></div><button class="primary" onclick="request('Storyboard')">Create Storyboard</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('pdf','Storyboard')">⬇️ Download Storyboard</button></div></div></section>
-
 <section id="character" class="page"><div class="panel"><h2>🧑 Character Maker</h2><p class="muted">Create a character and keep the same design across images, scenes and movies.</p><div class="field"><label>Character description</label><textarea placeholder="Example: cute toddler, blue shirt, brown hair, friendly smile..."></textarea></div><div class="field"><label>Style</label><div class="chips"><button class="chip active">3D Animation</button><button class="chip">Cartoon</button><button class="chip">Realistic</button><button class="chip">Claymation</button><button class="chip">Concept Sketch</button></div></div><div class="field"><label>Reference image</label><input type="file" accept="image/*"></div><button class="primary" onclick="request('Character')">Create Character</button></div></section>
-
 <section id="styles" class="page"><div class="panel"><h2>✨ AI Styles</h2><div class="grid"><div class="card">🎬 <b>3D Animation</b><span class="muted">Soft toy-like 3D</span></div><div class="card">🧸 <b>Cartoon</b><span class="muted">Cartoon look</span></div><div class="card">📷 <b>Realistic</b><span class="muted">Photoreal style</span></div><div class="card">💎 <b>4K</b><span class="muted">High resolution</span></div><div class="card">🪨 <b>Charcoal</b><span class="muted">Charcoal art</span></div><div class="card">🏺 <b>Claymation</b><span class="muted">Clay animation</span></div><div class="card">✏️ <b>Concept Sketch</b><span class="muted">Sketch style</span></div><div class="card">🌟 <b>Midjourney-style Character</b><span class="muted">Creative character design</span></div></div></div></section>
-
 <section id="music" class="page"><div class="panel"><h2>🎵 Music Maker</h2><div class="field"><textarea placeholder="Example: peaceful piano and rain..."></textarea></div><div class="field"><label>Duration</label><select><option>1 minute</option><option>5 minutes</option><option>10 minutes</option><option>30 minutes</option><option>1 hour</option><option>2 hours</option></select></div><button class="primary" onclick="request('Music')">Generate Music</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp3','Background Music')">⬇️ Download Music</button></div></div></section>
-
 <section id="song" class="page"><div class="panel"><h2>🎤 Song Maker</h2><div class="field"><label>Lyrics or song idea</label><textarea placeholder="Write lyrics or describe your song..."></textarea></div><div class="field"><label>Genre</label><select><option>Children's</option><option>Pop</option><option>Lo-fi</option><option>Cinematic</option><option>Acoustic</option></select></div><button class="primary" onclick="request('Song')">Create Song</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp3','AI Song')">⬇️ Download Song</button></div></div></section>
-
 <section id="clip" class="page"><div class="panel"><h2>✂️ URL Clipping</h2><div class="field"><label>Video URL</label><input type="url" placeholder="https://..."></div><div class="row"><div class="col field"><label>Start</label><input placeholder="00:00"></div><div class="col field"><label>End</label><input placeholder="00:30"></div></div><button class="primary" onclick="request('Clip')">Create Clip</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp4','Video Clip')">⬇️ Download Clip</button></div><p class="muted">Use only content you own or have permission to use.</p></div></section>
-
 <section id="asmr" class="page"><div class="panel"><h2>🎧 ASMR Video Maker</h2><div class="grid"><div class="card">🏗️ <b>ASMR Building</b><span class="muted">Construction and satisfying sounds</span></div><div class="card">🍳 <b>ASMR Cooking</b><span class="muted">Cooking and kitchen sounds</span></div></div><div class="field"><textarea placeholder="Describe your ASMR video..."></textarea></div><button class="primary" onclick="request('ASMR Video')">Generate ASMR Video</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp4','ASMR Video')">⬇️ Download ASMR Video</button></div></div></section>
-
 <section id="cooking" class="page"><div class="panel"><h2>🍳 ASMR Cooking</h2><div class="field"><textarea placeholder="Example: crispy chicken cooking, close-up sounds, no talking..."></textarea></div><button class="primary" onclick="request('ASMR Cooking')">Generate Cooking Video</button><div class="download-row"><button class="download-btn" onclick="downloadRequest('mp4','ASMR Cooking Video')">⬇️ Download Cooking Video</button></div></div></section>
-
 <section id="projects" class="page"><div class="panel"><h2>📁 My Projects</h2><div class="output" id="projectsOutput">Your generated images, videos, movies, music, songs and clips will appear here.</div><div class="download-row"><button class="download-btn" onclick="downloadRequest('txt','AI Creator Project')">⬇️ Download Project Info</button></div></div></section>
 </main></div>
 <div class="toast" id="toast"></div>
@@ -97,6 +81,29 @@ function go(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));nav.for
 nav.forEach(b=>b.onclick=()=>go(b.dataset.page));
 document.querySelectorAll('.chips').forEach(c=>c.onclick=e=>{if(e.target.classList.contains('chip')){c.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));e.target.classList.add('active')}});
 function request(type){let t=document.getElementById('toast');t.textContent=type+' tool selected. Real AI generation will be connected in the next development step.';t.style.display='block';setTimeout(()=>t.style.display='none',3500)}
+async function generateImage(){
+  const promptEl = document.getElementById('imagePrompt');
+  const output = document.getElementById('imageOutput');
+  const prompt = promptEl.value.trim();
+  if(!prompt){ output.textContent = 'Pehle prompt likhein.'; return; }
+  output.textContent = 'Image generate ho rahi hai... intezaar karein.';
+  try{
+    const res = await fetch('/api/generate-image', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ prompt })
+    });
+    const data = await res.json();
+    if(!res.ok){
+      output.textContent = 'Error: ' + (data.error || 'Kuch ghalat ho gaya.');
+      return;
+    }
+    output.innerHTML = '<img src="'+data.imageUrl+'" style="max-width:100%;border-radius:10px">';
+    output.dataset.imageUrl = data.imageUrl;
+  }catch(err){
+    output.textContent = 'Error: ' + err.message;
+  }
+}
 function downloadRequest(ext,label){
   const text = label + "\n\nThis is an AI Creator Studio download placeholder.\nReal media download will work after an AI generation backend is connected.\n";
   const mime = ext==='txt' ? 'text/plain' : 'application/octet-stream';
