@@ -10,27 +10,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch('https://api.openai.com/v1/images/generations', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: 'dall-e-3',
-        prompt: prompt,
-        n: 1,
-        size: '1024x1024',
-      }),
-    });
+    const encodedPrompt = encodeURIComponent(prompt);
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1024&height=576&nologo=true`;
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      return res.status(response.status).json({ error: data.error?.message || 'Image generation failed' });
-    }
-
-    return res.status(200).json({ imageUrl: data.data[0].url });
+    return res.status(200).json({ imageUrl });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
